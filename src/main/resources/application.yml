@@ -8,7 +8,7 @@ spring:
     # 테이블 생성 후 data.sql 실행
     defer-datasource-initialization: true
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdbc
 
   h2:
     console:
