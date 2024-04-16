@@ -25,14 +25,28 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
     // Spring Security를 사용하기 위한 starter 추가
     implementation 'org.springframework.boot:spring-boot-starter-security'
     // Thymeleaf에서 Spring Security를 사용하기 위한 의존성 추가
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
+
+    implementation 'com.mysql:mysql-connector-j:8.3.0'
+
+    implementation 'org.slf4j:slf4j-api:2.0.13'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.5'
+
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // Spring Security를 테스트하기 위한 의존성 추가
     testImplementation 'org.springframework.security:spring-security-test'
