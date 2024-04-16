@@ -2,15 +2,31 @@ spring:
   jpa:
     # 전송 쿼리 확인
     show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
         format_sql: true
     # 테이블 생성 후 data.sql 실행
     defer-datasource-initialization: true
   datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: root
+    password: ${DB_PASSWORD}
+
+  #    url: jdbc:h2:mem:testdb
+#    username: sa
 
   h2:
     console:
       enabled: true
+
+jwt:
+  secret: ${JWT_SECRET} # 문자열을 Base64로 암호화한 값
+#  access-token-validity-in-milliseconds: 86400000  # 24시간
+  access-token-validity-in-milliseconds: 86400
+  refresh-token-validity-in-milliseconds: 2592000000 # 30일
+

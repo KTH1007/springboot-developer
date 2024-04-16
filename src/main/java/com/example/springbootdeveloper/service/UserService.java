@@ -14,11 +14,17 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Long save(AddUserRequest dto) {
-        return userRepository.save(User.builder()
-                .email(dto.getEmail())
-                // password 암호화
-                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
-                .build()).getId();
+    public void save(AddUserRequest dto) {
+
+        Boolean isExist = userRepository.existsByUsername(dto.getUsername());
+
+        if (!isExist) {
+            userRepository.save(User.builder()
+                    .username(dto.getUsername())
+                    // password 암호화
+                    .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                    .role("ROLE_ADMIN")
+                    .build());
+        }
     }
 }
